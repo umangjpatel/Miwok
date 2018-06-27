@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="number_one_miwok">lutti</string>
+    <string name="number_one_normal">one</string>
+    <string name="number_two_miwok">otiiko</string>
+    <string name="number_two_normal">two</string>
+    <string name="number_three_miwok">tolookosu</string>
+    <string name="number_three_normal">three</string>
+    <string name="number_four_miwok">oyyisa</string>
+    <string name="number_four_normal">four</string>
+    <string name="number_five_miwok">massokka</string>
+    <string name="number_five_normal">five</string>
+    <string name="number_six_miwok">temmokka</string>
+    <string name="number_six_normal">six</string>
+    <string name="number_seven_miwok">kenekaku</string>
+    <string name="number_seven_normal">seven</string>
+    <string name="number_eight_miwok">kawinta</string>
+    <string name="number_eight_normal">eight</string>
+    <string name="number_nine_miwok">wo\'e</string>
+    <string name="number_nine_normal">nine</string>
+    <string name="number_ten_miwok">na\'aacha</string>
+    <string name="number_ten_normal">ten</string>
+</resources>

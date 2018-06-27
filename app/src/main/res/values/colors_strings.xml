@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="color_red_miwok">weṭeṭṭi</string>
+    <string name="color_red_normal">red</string>
+    <string name="color_green_miwok">chokokki</string>
+    <string name="color_green_normal">green</string>
+    <string name="color_brown_miwok">ṭakaakki</string>
+    <string name="color_brown_normal">brown</string>
+    <string name="color_gray_miwok">ṭopoppi</string>
+    <string name="color_gray_normal">gray</string>
+    <string name="color_black_miwok">kululli</string>
+    <string name="color_black_normal">black</string>
+    <string name="color_white_miwok">kelelli</string>
+    <string name="color_white_normal">white</string>
+    <string name="color_dusty_yellow_miwok">ṭopiisә</string>
+    <string name="color_dusty_yellow_normal">dusty yellow</string>
+    <string name="color_mustard_yellow_miwok">chiwiiṭә</string>
+    <string name="color_mustard_yellow_normal">mustard yellow</string>
+
+</resources>
