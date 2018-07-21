@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="family_father_miwok">әpә</string>
-    <string name="family_father_normal">father</string>
     <string name="family_mother_miwok">әṭa</string>
-    <string name="family_mother_normal">mother</string>
     <string name="family_son_miwok">angsi</string>
-    <string name="family_son_normal">son</string>
     <string name="family_daughter_miwok">tune</string>
-    <string name="family_daughter_normal">daughter</string>
     <string name="family_older_brother_miwok">taachi</string>
-    <string name="family_older_brother_normal">older brother</string>
     <string name="family_younger_brother_miwok">chalitti</string>
-    <string name="family_younger_brother_normal">younger brother</string>
     <string name="family_older_sister_miwok">teṭe</string>
-    <string name="family_older_sister_normal">older sister</string>
     <string name="family_younger_sister_miwok">kolliti</string>
-    <string name="family_younger_sister_normal">younger sister</string>
     <string name="family_grandfather_miwok">paapa</string>
-    <string name="family_grandfather_normal">grandfather</string>
     <string name="family_grandmother_miwok">ama</string>
-    <string name="family_grandmother_normal">grandmother</string>
 </resources>

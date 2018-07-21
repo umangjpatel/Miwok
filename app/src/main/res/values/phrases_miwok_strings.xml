@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="where_are_you_going_miwok">minto wuksus</string>
-    <string name="where_are_you_going_normal">Where are you going?</string>
     <string name="what_is_your_name_miwok">tinnә oyaase\'nә</string>
-    <string name="what_is_your_name_normal">What is your name?</string>
     <string name="my_name_is_miwok">oyaaset…</string>
-    <string name="my_name_is_normal">My name is…</string>
     <string name="how_are_you_feeling_miwok">michәksәs?</string>
-    <string name="how_are_you_feeling_normal">How are you feeling?</string>
     <string name="i_m_feeling_good_miwok">kuchi achit</string>
-    <string name="i_m_feeling_good_normal">I\'m feeling good</string>
     <string name="are_you_coming_miwok">әәnәs\'aa?</string>
-    <string name="are_you_coming_normal">Are you coming?</string>
     <string name="yes_i_m_coming_miwok">hәә\' әәnәm</string>
-    <string name="yes_i_m_coming_normal">Yes, I\'m coming</string>
     <string name="i_m_coming_miwok">әәnәm</string>
-    <string name="i_m_coming_normal">I\'m coming</string>
     <string name="lets_go_miwok">yoowutis</string>
-    <string name="lets_go_normal">Let\'s go</string>
     <string name="come_here_miwok">әnni\'nem</string>
-    <string name="come_here_normal">Come here</string>
 </resources>
