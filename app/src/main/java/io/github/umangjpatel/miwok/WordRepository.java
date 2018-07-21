@@ -5,11 +5,17 @@ import java.util.List;
 
 public class WordRepository {
 
-    private static final WordRepository sWordRepository = new WordRepository();
+    private static WordRepository sWordRepository;
 
     private List<Word> mNumbersWords, mFamilyWords, mColorWords, mPhrasesWords;
 
     public static WordRepository getInstance() {
+        if (sWordRepository == null) {
+            synchronized (WordRepository.class) {
+                if (sWordRepository == null)
+                    sWordRepository = new WordRepository();
+            }
+        }
         return sWordRepository;
     }
 

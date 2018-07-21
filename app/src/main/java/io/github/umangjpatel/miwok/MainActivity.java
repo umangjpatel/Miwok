@@ -3,6 +3,7 @@ package io.github.umangjpatel.miwok;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -28,16 +29,21 @@ import io.github.umangjpatel.miwok.databinding.WordListItemBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String KEY_ITEM_ID = MainActivity.class.getSimpleName() + ".key_item_id";
+
     private ActivityMainBinding mBinding;
     private WordViewModel mWordViewModel;
     private WordAdapter mWordAdapter;
+
+    private int mItemId;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+            mItemId = item.getItemId();
+            switch (mItemId) {
                 case R.id.navigation_numbers:
                     mWordViewModel.getWords(0);
                     return true;
@@ -56,25 +62,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mBinding.setLifecycleOwner(this);
-        mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
-        setUpRecyclerView();
-        setUpAdapter();
-        mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        mBinding.navigation.setSelectedItemId(R.id.navigation_numbers);
-        mWordViewModel.getWordsLiveData().observe(this, new Observer<List<Word>>() {
-            @Override
-            public void onChanged(@Nullable List<Word> words) {
-                mWordAdapter.setWords(words);
-                mWordAdapter.notifyDataSetChanged();
-            }
-        });
-
-
+    @NonNull
+    public static Intent newIntent(Context context) {
+        return new Intent(context, MainActivity.class);
     }
 
     private void setUpRecyclerView() {
@@ -84,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpAdapter() {
-
         if (mWordAdapter == null) {
             mWordAdapter = new WordAdapter(mWordViewModel.getWordsLiveData().getValue());
             mBinding.wordsRecyclerView.setAdapter(mWordAdapter);
@@ -92,9 +81,37 @@ public class MainActivity extends AppCompatActivity {
             mWordAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding.setLifecycleOwner(this);
+        mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
+        setUpRecyclerView();
+        setUpAdapter();
+        mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mItemId = savedInstanceState != null ? savedInstanceState.getInt(KEY_ITEM_ID) : R.id.navigation_numbers;
+        mBinding.navigation.setSelectedItemId(mItemId);
+        mWordViewModel.getWordsLiveData().observe(this, new Observer<List<Word>>() {
+            @Override
+            public void onChanged(@Nullable List<Word> words) {
+                mWordAdapter.setWords(words);
+                mWordAdapter.notifyDataSetChanged();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_ITEM_ID, mItemId);
+    }
+
     private class WordHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private WordListItemBinding mWordListItemBinding;
+
         private Word mWord;
 
         WordHolder(WordListItemBinding wordListItemBinding) {
@@ -130,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 
     private class WordAdapter extends RecyclerView.Adapter<WordHolder> {
@@ -162,9 +180,11 @@ public class MainActivity extends AppCompatActivity {
         public void setWords(List<Word> words) {
             mWords = words;
         }
+
     }
 
     private class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
+
         private Drawable mDivider;
 
         SimpleDividerItemDecoration(Context context) {
@@ -189,6 +209,6 @@ public class MainActivity extends AppCompatActivity {
                 mDivider.draw(c);
             }
         }
-    }
 
+    }
 }
