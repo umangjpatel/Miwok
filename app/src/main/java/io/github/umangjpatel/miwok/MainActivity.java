@@ -1,6 +1,5 @@
 package io.github.umangjpatel.miwok;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -92,12 +90,9 @@ public class MainActivity extends AppCompatActivity {
         mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mItemId = savedInstanceState != null ? savedInstanceState.getInt(KEY_ITEM_ID) : R.id.navigation_numbers;
         mBinding.navigation.setSelectedItemId(mItemId);
-        mWordViewModel.getWordsLiveData().observe(this, new Observer<List<Word>>() {
-            @Override
-            public void onChanged(@Nullable List<Word> words) {
-                mWordAdapter.setWords(words);
-                mWordAdapter.notifyDataSetChanged();
-            }
+        mWordViewModel.getWordsLiveData().observe(this, words -> {
+            mWordAdapter.setWords(words);
+            mWordAdapter.notifyDataSetChanged();
         });
 
     }
@@ -138,13 +133,10 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             final MediaPlayer player = MediaPlayer.create(MainActivity.this, mWord.getSoundResId());
             player.start();
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mp.stop();
-                    mp.release();
-                    player.release();
-                }
+            player.setOnCompletionListener(mp -> {
+                mp.stop();
+                mp.release();
+                player.release();
             });
         }
 
@@ -177,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             return mWords.size();
         }
 
-        public void setWords(List<Word> words) {
+        void setWords(List<Word> words) {
             mWords = words;
         }
 
